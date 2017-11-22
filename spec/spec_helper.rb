@@ -13,6 +13,7 @@
 # it.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require 'database_cleaner'
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
@@ -93,4 +94,25 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+# Shoulder matchers library defines faramework-independt matchers
+Shoulda::Matchers.configure do |configa|
+  configa.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end
+
+RSpec.configuration do |confg|
+  confg.include FactoryGirl::Syntax::Methods
+  confg.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.around(:each) do |test|
+    DatabaseCleaner.cleaning do
+      test.run
+    end
+  end
+end
 end
