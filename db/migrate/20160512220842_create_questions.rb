@@ -4,6 +4,7 @@ class CreateQuestions < ActiveRecord::Migration[5.1]
       t.string :title,     null: false
       t.boolean :private,  default: false
       t.integer :user_id, null: false
+      t.belongs_to :user, index: true
 
       t.timestamps null: false
     end

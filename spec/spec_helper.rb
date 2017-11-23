@@ -95,12 +95,6 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 # Shoulder matchers library defines faramework-independt matchers
-Shoulda::Matchers.configure do |configa|
-  configa.integrate do |with|
-    with.test_framework :rspec
-    with.library :rails
-  end
-end
 
 RSpec.configuration do |confg|
   confg.include FactoryGirl::Syntax::Methods
