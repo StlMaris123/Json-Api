@@ -2,11 +2,13 @@ require 'rails_helper'
 
 RSpec.describe 'Question', type: :request do
 
-  let!(:questions) { create_list(:question, 10) }
+  let!(:questions) { FactoryGirl.create_list(:question, 10, user_id: user.id) }
+  let!(:user) { FactoryGirl.create(:user)}
+  let(:user_id) { user.id }
   let(:question_id) { questions.first.id }
 
-  describe 'GET/questions' do
-    before { get '/questions' }
+  describe 'GET/users/:user_id/questions' do
+    before { get "/users/#{user_id}/questions" }
 
     it 'returns questions' do
       expect(json).not_to be_empty

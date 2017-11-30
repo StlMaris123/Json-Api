@@ -44,11 +44,8 @@ ActiveRecord::Schema.define(version: 20171123074236) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "question_id"
-    t.index ["question_id"], name: "index_users_on_question_id"
   end
 
   add_foreign_key "answers", "users"
   add_foreign_key "questions", "users"
-  add_foreign_key "users", "questions"
 end
