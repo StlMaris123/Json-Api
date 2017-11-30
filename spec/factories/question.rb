@@ -1,5 +1,7 @@
 FactoryGirl.define do
   factory :question do
-    association :user
+    body { Faker::Lorem.sentence }
+    question_id 1
+    user_id 1
   end
 end
