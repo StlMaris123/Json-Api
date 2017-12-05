@@ -21,7 +21,7 @@ RSpec.describe 'Question', type: :request do
   end
 
   describe 'GET question/:id' do
-    context 'when record does not exit' do
+    context 'when record does not exist' do
       let(:question_id) {Question.last.id + 23}
 
       it 'returns status code 404' do
