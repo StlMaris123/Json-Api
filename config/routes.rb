@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
 
- root 'welcome#index'
+  root 'welcome#index'
 
- resources :users do
-   resources :questions do
-     resources :answers
-   end
- end
+  resources :users 
+  resources :questions do
+    resources :answers
+  end
 end
