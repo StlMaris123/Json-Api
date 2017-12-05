@@ -12,7 +12,8 @@ RSpec.describe 'Question', type: :request do
 
     it 'returns questions' do
       expect(json).not_to be_empty
-      expect(json.size).to eq(10)
+      number = Question.where(private: false).count
+      expect(json.size).to eq(number)
     end
 
     it 'returns status 200' do

@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
 
   def index
-    json_response(Question.all)
+    json_response(Question.where(private: false ))
   end
   
   def show
