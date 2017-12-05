@@ -18,6 +18,7 @@ RSpec.describe 'Answer' do
       end
 
       it 'returns all answers' do
+        expect(json).not_to be_empty
         expect(json.size).to eq(20)
       end
     end
