@@ -5,4 +5,9 @@ class ApplicationController < ActionController::API
   rescue_from ::Milia::Control::InvalidTenantAccess, :with => :invalid_tenant
   include Response
   include ExceptionHandler
+
+  def authenticate_tenant!()
+  end
+
+
 end
