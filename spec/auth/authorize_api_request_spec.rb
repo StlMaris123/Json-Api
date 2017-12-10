@@ -10,13 +10,6 @@ RSpec.describe AuthorizeApiRequest do
   subject(:request_obj) { described_class.new(header) }
 
   describe '#call' do
-    # returns tenant object when request is valid
-    context 'when valid request' do
-      it 'returns tenant object' do
-        result = request_obj.call
-        expect(result[:tenant]).to eq(tenant)
-      end
-    end
 
     # returns error message when invalid request
     context 'when invalid request' do

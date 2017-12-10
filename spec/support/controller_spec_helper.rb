@@ -1,15 +1,15 @@
 module ControllerSpecHelper
-  def token_generator(tenant_id)
-    JsonWebToken.encode(tenant_id: tenant_id)
+  def token_generator(user_id)
+    JsonWebToken.encode(use_id: user_id)
   end
 
-  def expired_token_generator(tenant_id)
-    JsonWebToken.encode({ tenant_id: tenant_id }, (Time.now.to_i - 10))
+  def expired_token_generator(user_id)
+    JsonWebToken.encode({ user_id: user_id }, (Time.now.to_i - 10))
   end
 
   def valid_headers
     {
-      "Authorization" => token_generator(tenant.id),
+      "Authorization" => token_generator(user.id),
       "Content-Type" => "application/json"
     }
   end

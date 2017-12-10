@@ -1,5 +1,6 @@
 class AuthenticateUser
-  def initialize(email, password)
+  def initialize(name, email, password)
+    @name = name
     @email = email
     @password = password
   end
@@ -9,7 +10,8 @@ class AuthenticateUser
   end
 
   private
-  attr_reader :email, :password
+  attr_reader :name, :email, :password
+
   def user
     user = User.find_by(email: email)
     return user if user && user.authenticate(password)

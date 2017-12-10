@@ -184,6 +184,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-session_store!
   annotate
+  bcrypt
   byebug
   database_cleaner
   devise
