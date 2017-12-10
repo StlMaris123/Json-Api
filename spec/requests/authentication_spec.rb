@@ -7,6 +7,7 @@ RSpec.describe 'Authentication', type: :request do
 
     let(:valid_credentials) do
       {
+        name: user.name,
         email: user.email,
         password: user.password
       }.to_json
@@ -22,7 +23,7 @@ RSpec.describe 'Authentication', type: :request do
       before { post '/auth/login', params: valid_credentials, headers: headers }
 
       it 'returns an authentication token' do
-        expect(jason['auth_token']).not_to be_nil
+        expect(json['auth_token']).not_to be_nil
       end
     end
 
