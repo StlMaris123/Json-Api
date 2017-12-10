@@ -2,7 +2,7 @@ class AnswersController < ApplicationController
 
   def index
     set_question
-    json_response(@question.answers)
+    @answers = json_response(@question.answers)
   end
 
   def create
