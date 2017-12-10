@@ -6,11 +6,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create!(user_params)
-    json_resonse(@user, :created)
+    auth_token = AuthenticateUser.new(@user.name, @user.email, @user.password).call
+    response = { message: Message.account_created, auth_token: auth_token }
+    json_response(response, :created)
   end
 
   private
   def user_params
-    params.permit(:name, :email, :password_digest) 
+    params.permit(:name, :email, :password, :password_confirmation) 
   end
 end
